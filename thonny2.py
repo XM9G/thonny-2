@@ -4,10 +4,7 @@ from tkinter import filedialog, scrolledtext
 import subprocess
 import threading
 
-from sandbox.modules.thonny import *
 
-
-thonny()
 
 def new_file():
     text.delete("1.0", tk.END)
