@@ -87,8 +87,8 @@ menu_bar.add_cascade(label="Run", menu=run_menu)
 run_menu.add_command(label="Run Python File (ctrl+r)", command=run_file)
 
 # Button to open the website
-button = tk.Button(root, text="Open advanced thonny 2 version", command=open_website)
-button.pack(pady=20)
+# button = tk.Button(root, text="Open advanced thonny 2 version", command=open_website)
+# button.pack(pady=20)
 
 # Create a text widget for result output with a smaller height
 result_text = scrolledtext.ScrolledText(root, wrap="word", height=10, bg="black", fg="white", insertbackground="white")

@@ -3,8 +3,10 @@ This is thonny but better
 
 ## how to install? 
 ensure that python is installed.
+
 [Click here to download python](https://www.python.org/downloads/)
-simply click this button as shown in the image:
+
+then simply click this button as shown in the image:
 
 ![image](https://github.com/XM9G/thonny-2/assets/83699020/07d1046b-ac91-4c8b-b5ec-eeae7b33fe3a)
 
