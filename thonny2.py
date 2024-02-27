@@ -3,9 +3,9 @@ import tkinter as tk
 from tkinter import filedialog, scrolledtext
 import subprocess
 import threading
-
-
 import webbrowser
+from tkinter import Toplevel, Frame
+import tkinterhtml as tkhtml
 
 def new_file():
     text.delete("1.0", tk.END)
@@ -46,12 +46,23 @@ def stop_execution():
         process.terminate()
 
 def open_website():
-    webbrowser.open("https://grabify.link/80TYTR")
+    # Open a new window to display the embedded website
+    website_window = Toplevel(root)
+    website_window.title("Thonny 2 advanced")
+
+    # Create a frame for the embedded website
+    website_frame = Frame(website_window)
+    website_frame.pack(expand="yes", fill="both")
+
+    # Embed the website using tkinterhtml
+    html_widget = tkhtml.HtmlFrame(website_frame)
+    html_widget.set_content("<iframe src='xm9g.xyz' width='100%' height='100%'></iframe>")
+    html_widget.pack(expand="yes", fill="both")
 
 # Create the main window
 root = tk.Tk()
 root.title("Thonny 2")
-root.iconbitmap("assets/logo.ico")
+# root.iconbitmap("assets/logo.ico")
 
 # Create a text widget for code input
 text = tk.Text(root, wrap="word", undo=True, bg="black", fg="white", insertbackground="white")
@@ -75,8 +86,8 @@ run_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Run", menu=run_menu)
 run_menu.add_command(label="Run Python File (ctrl+r)", command=run_file)
 
-# all heil thonny
-button = tk.Button(root, text="Support Isreal and Russia", command=open_website)
+# Button to open the website
+button = tk.Button(root, text="Open advanced thonny 2 version", command=open_website)
 button.pack(pady=20)
 
 # Create a text widget for result output with a smaller height
