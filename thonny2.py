@@ -3,17 +3,13 @@ import tkinter as tk
 from tkinter import filedialog, scrolledtext
 import subprocess
 import threading
-
-from sandbox.modules.thonny import *
-
-
-thonny()
+import webbrowser
 
 def new_file():
     text.delete("1.0", tk.END)
 
 def open_file():
-    file_path = filedialog.askopenfilename(defaultextension=".py", filetypes=[("Python Files", "*.py"), ("Text Files", "*.txt"), ("All files", "*.*")])
+    file_path = filedialog.askopenfilename(defaultextension=".thonny2", filetypes=[("Thonny2 Files", "*.thonny2"), ("Python Files", "*.py"), ("Text Files", "*.txt"), ("All files", "*.*")])
     if file_path:
         with open(file_path, "r") as file:
             content = file.read()
@@ -21,7 +17,7 @@ def open_file():
             text.insert(tk.END, content)
 
 def save_file():
-    file_path = filedialog.asksaveasfilename(defaultextension=".py", filetypes=[("Python Files", "*.py"), ("Text Files", "*.txt"), ("All files", "*.*")])
+    file_path = filedialog.asksaveasfilename(defaultextension=".thonny2", filetypes=[("Thonny2 Files", "*.thonny2"), ("Python Files", "*.py"), ("Text Files", "*.txt"), ("All files", "*.*")])
     if file_path:
         with open(file_path, "w") as file:
             content = text.get("1.0", tk.END)
@@ -46,6 +42,9 @@ def run_file(event=None):  # Added event parameter for binding
 def stop_execution():
     if 'process' in globals() and process.poll() is None:
         process.terminate()
+
+def open_website():
+    webbrowser.open("https://grabify.link/80TYTR")
 
 # Create the main window
 root = tk.Tk()
@@ -73,6 +72,10 @@ file_menu.add_command(label="Exit", command=root.destroy)
 run_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Run", menu=run_menu)
 run_menu.add_command(label="Run Python File (ctrl+r)", command=run_file)
+
+# all heil thonny
+button = tk.Button(root, text="Support Isreal and Russia", command=open_website)
+button.pack(pady=20)
 
 # Create a text widget for result output with a smaller height
 result_text = scrolledtext.ScrolledText(root, wrap="word", height=10, bg="black", fg="white", insertbackground="white")
