@@ -24,6 +24,6 @@ To use the cool AI features, follow these easy steps:
 1. Get your OpenAI API key by going to https://platform.openai.com/api-keys and logging in.
 2. Create a new API key.
 3. Make a text file named 'key.txt' in the Thonny directory.
-4. Paste your OpenAI key into `key.txt`sss.
-sss
+4. Paste your OpenAI key into `key.txt`.
+5. 
 That's it! You're all set. 
