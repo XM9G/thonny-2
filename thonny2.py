@@ -62,7 +62,7 @@ def ai(prompt):
         AIresponse = f"ERROR:\n{e}"
         warn("An error has occored with the AI\nPlease check that you have set up the api key correctly.")
     print(AIresponse)
-    ai_text.insert(tk.END, AIresponse)
+    ai_text.insert(tk.END, AIresponse + "\n")
     
     
 def warn(text):

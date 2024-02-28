@@ -22,7 +22,7 @@ def send_to_gpt3(variable, model="gpt-3.5-turbo-0613", temperature=0.7, max_toke
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a python coding assistant."},
+            {"role": "system", "content": "You are a python coding assistant. If asked to write code, please only output the code and nothing else, but use comments to describe what the code does. DO NOT USE CODEBLOCKS. If you are asked a non-programming question try and steer the conversation back to programming."},
             {"role": "user", "content": prompt},
         ]
         )
