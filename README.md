@@ -3,6 +3,7 @@ This is thonny but better
 
 ## how to install? 
 ensure that python is installed.
+
 install openai `pip install openai`
 
 [Click here to download python](https://www.python.org/downloads/)
