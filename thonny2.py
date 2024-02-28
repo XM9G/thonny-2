@@ -4,8 +4,12 @@ from tkinter import filedialog, scrolledtext
 import subprocess
 import threading
 import webbrowser
-from tkinter import Toplevel, Frame
+from tkinter import Toplevel, Frame, Entry, Button
 import tkinterhtml as tkhtml
+
+
+
+
 
 def new_file():
     text.delete("1.0", tk.END)
@@ -31,14 +35,14 @@ def run_file(event=None):  # Added event parameter for binding
         temp_file.write(content)
 
     process = subprocess.Popen(["python", "sandbox/temp_file.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    
+
     def update_output():
         while process.poll() is None:
             output = process.stdout.readline()
             error = process.stderr.readline()
             result_text.insert(tk.END, output + error)
             result_text.yview(tk.END)
-        
+
     threading.Thread(target=update_output).start()
 
 def stop_execution():
@@ -59,14 +63,24 @@ def open_website():
     html_widget.set_content("<iframe src='xm9g.xyz' width='100%' height='100%'></iframe>")
     html_widget.pack(expand="yes", fill="both")
 
+
+
+
 # Create the main window
 root = tk.Tk()
 root.title("Thonny 2")
-# root.iconbitmap("assets/logo.ico")
 
 # Create a text widget for code input
 text = tk.Text(root, wrap="word", undo=True, bg="black", fg="white", insertbackground="white")
-text.pack(expand="yes", fill="both" )
+text.pack(expand="yes", fill="both")
+
+# Create an entry widget for input
+input_entry = Entry(root, bg="black", fg="white")
+input_entry.pack(expand="yes", fill="both")
+
+# Create a button to send text to GPT-3
+send_button = Button(root, text="Send to GPT-3", command=send_to_gpt3("test"))
+send_button.pack(pady=10)
 
 # Create a menu bar
 menu_bar = tk.Menu(root)
@@ -86,13 +100,9 @@ run_menu = tk.Menu(menu_bar, tearoff=0)
 menu_bar.add_cascade(label="Run", menu=run_menu)
 run_menu.add_command(label="Run Python File (ctrl+r)", command=run_file)
 
-# Button to open the website
-# button = tk.Button(root, text="Open advanced thonny 2 version", command=open_website)
-# button.pack(pady=20)
-
 # Create a text widget for result output with a smaller height
 result_text = scrolledtext.ScrolledText(root, wrap="word", height=10, bg="black", fg="white", insertbackground="white")
-result_text.pack(expand="yes", fill="both" )
+result_text.pack(expand="yes", fill="both")
 
 # Bind Ctrl+R to run_file function
 root.bind("<Control-r>", run_file)
